@@ -34,7 +34,7 @@
       <div class="logo-image">
         <img src="tt_ico48.png" class="img-fluid">
       </div>
-    <a class="navbar-brand" href="#">TopicTunnel</a>
+    <a class="navbar-brand nav-link" data-topic="home" href="#">TopicTunnel</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -90,13 +90,14 @@
         });
         
         // Initial content generation
-        generateContent('inspiration');
+        generateContent('home');
     });
 
     // Function to generate content based on the selected topic
     function generateContent(topic) {
         // Content mapping based on topics
         var contentMap = {
+            'home': "Stay Focused with Ease!\nTopicTunnel is a powerful browser extension designed to keep you on track during work or study sessions. Input your current topic, and let our advanced AI algorithms analyze your visited webpages. Receive gentle reminders if you stray off-topic, and enjoy breaks with the popular 'pomodoro timer' method. Embrace productivity and conquer distractions effortlessly.",
             'inspiration': "During a brainstorming session at Qdoba, we faced distraction and decided on an innovative solution - a browser extension. This extension helps users stay focused by blocking irrelevant sites while working on a specific topic.",
             'what-it-does': "Our extension lets users input their working topic. Using advanced AI algorithms, it processes visited webpages, determining if the user is staying on topic. If they visit an 'off-topic' page, they receive a gentle reminder. After a period, users are rewarded with free time, following the 'pomodoro timer' method.",
             'how-we-built-it': "Utilizing the powerful Google Chrome API, our extension fetches relevant data from user-visited websites. The Bootstrap front-end sends text via an HTTP request to a Google Cloud Function, which contains Python code utilizing the OpenAI API. The HTTP response contains a binary identifier indicating on/off-topic. The front-end then blocks out irrelevant sites, ensuring users return to their main task.",
