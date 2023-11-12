@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopicTunnel - Stay Focused Browser Extension</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+        p {
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Inspiration</h1>
+        <p>We were at Qdoba and became unfocused while brainstorming ideas for MadHacks. In a moment of genius, we
+            decided the perfect solution would be a browser extension that allows the user to stay on focus by blocking
+            sites not relevant to their topic they are working on.</p>
+
+        <h1>What it does</h1>
+        <p>Our extension allows the user to input a topic they are working on, and using advanced AI algorithms,
+            processes visited webpages and determines whether the user is staying on topic or not. If the user visits an
+            "off-topic" page they will be given a gentle reminder to stay on task. After a period of time, the user is
+            rewarded with some free time, by popular time-management method "pomodoro timer".</p>
+
+        <h1>How we built it</h1>
+        <p>Our extension utilizes the powerful and universal Google Chrome API to retrieve relevant data from the
+            websites the user visits. Our bootstrap front-end grabs text and forwards via an HTTP request to a Google
+            Cloud Function which contains Python code to utilize OpenAI API to process whether the website is related
+            to the user's topic. An HTTP response is sent back containing a binary identifier on whether the user is
+            on/off-topic. The front-end then handles the identifier and appropriately blocks out the site so the user
+            must return to the topic at hand.</p>
+
+        <h1>Challenges we ran into</h1>
+        <p>Initially, we had some trouble setting up a Chrome extension as none of us had experience with this type of
+            development before. Two other issues arose later on in our development cycle. Firstly, was coding trouble
+            regarding the extension persisting time data across tabs to accurately and with low performance overhead
+            to the browser. Secondly, was finding an appropriate LLM model that could identify website topics accurately
+            and quickly, and later waiting for OpenAI to recover from an outage.</p>
+
+        <h1>Accomplishments that we're proud of</h1>
+        <p>We are especially proud of quickly handling tab event updates and processing topics while still allowing an
+            easy integration into our other systems.</p>
+
+        <h1>What we learned</h1>
+        <p>Web development can take many paths, and sometimes the easiest path is not the easiest.</p>
+
+        <h1>What's next for TopicTunnel</h1>
+        <p>Becoming a startup and bought out for 1 million dollars</p>
+
+        <h1>Built With</h1>
+        <ul>
+            <li>AI</li>
+            <li>Bootstrap</li>
+            <li>CSS3</li>
+            <li>HTML5</li>
+            <li>JavaScript</li>
+            <li>Python</li>
+        </ul>
+    </div>
+</body>
+
+</html>
