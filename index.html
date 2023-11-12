@@ -62,18 +62,34 @@
     </div>
 </nav>
 
-<!-- Content -->
 <div class="content">
+    <h1>Welcome to TopicTunnel!</h1>
     <div id="dynamic-content">
         <!-- Content will be dynamically generated here -->
     </div>
 </div>
+
 <!-- Bootstrap and jQuery JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+    $(document).ready(function () {
+        // Handle navbar link clicks
+        $('.nav-link').click(function () {
+            var topic = $(this).data('topic');
+            generateContent(topic);
+        });
+
+        // Dark mode toggle
+        $('#darkModeToggle').change(function () {
+            $('body').toggleClass('dark-mode');
+        });
+
         // Initial content generation
-        generateContent('home');
+        generateContent('inspiration');
     });
 
     // Function to generate content based on the selected topic
