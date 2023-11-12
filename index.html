@@ -82,12 +82,6 @@
             var topic = $(this).data('topic');
             generateContent(topic);
         });
-
-        // Dark mode toggle
-        $('#darkModeToggle').change(function () {
-            $('body').toggleClass('dark-mode');
-        });
-
         // Initial content generation
         generateContent('inspiration');
     });
