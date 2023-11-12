@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,19 +16,22 @@
         .content {
             margin: 20px;
         }
+        .dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+        .navbar-dark .navbar-toggler-icon {
+            background-color: #fff;
+        }
     </style>
     <!-- Google Fonts - Poppins -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
-
 </head>
 <body>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="logo-image">
-        <img src="tt_ico48.png" class="img-fluid">
-      </div>    
-    <a class="navbar-brand nav-link" data-topic="home" href="#">TopicTunnel</a>
+    <a class="navbar-brand" href="#">TopicTunnel</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -60,10 +63,14 @@
             </li>
         </ul>
     </div>
+    <div class="form-check form-switch ml-auto">
+        <input class="form-check-input" type="checkbox" id="darkModeToggle">
+        <label class="form-check-label" for="darkModeToggle">Dark Mode</label>
+    </div>
 </nav>
 
+<!-- Content -->
 <div class="content">
-    <h1>Welcome to TopicTunnel!</h1>
     <div id="dynamic-content">
         <!-- Content will be dynamically generated here -->
     </div>
@@ -82,6 +89,12 @@
             var topic = $(this).data('topic');
             generateContent(topic);
         });
+
+        // Dark mode toggle
+        $('#darkModeToggle').change(function () {
+            $('body').toggleClass('dark-mode');
+        });
+
         // Initial content generation
         generateContent('inspiration');
     });
@@ -90,21 +103,16 @@
     function generateContent(topic) {
         // Content mapping based on topics
         var contentMap = {
-            'home': "Stay Focused with Ease!\nTopicTunnel is a powerful browser extension designed to keep you on track during work or study sessions. Input your current topic, and let our advanced AI algorithms analyze your visited webpages. Receive gentle reminders if you stray off-topic, and enjoy breaks with the popular 'pomodoro timer' method. Embrace productivity and conquer distractions effortlessly.",
             'inspiration': "During a brainstorming session at Qdoba, we faced distraction and decided on an innovative solution - a browser extension. This extension helps users stay focused by blocking irrelevant sites while working on a specific topic.",
             'what-it-does': "Our extension lets users input their working topic. Using advanced AI algorithms, it processes visited webpages, determining if the user is staying on topic. If they visit an 'off-topic' page, they receive a gentle reminder. After a period, users are rewarded with free time, following the 'pomodoro timer' method.",
             'how-we-built-it': "Utilizing the powerful Google Chrome API, our extension fetches relevant data from user-visited websites. The Bootstrap front-end sends text via an HTTP request to a Google Cloud Function, which contains Python code utilizing the OpenAI API. The HTTP response contains a binary identifier indicating on/off-topic. The front-end then blocks out irrelevant sites, ensuring users return to their main task.",
             'challenges': "Initially, setting up a Chrome extension posed challenges due to our lack of prior experience. Later, coding issues surfaced regarding persisting time data across tabs with low performance overhead. Additionally, finding an LLM model for accurate and quick website topic identification posed difficulties, exacerbated by an OpenAI outage.",
             'accomplishments': "We take pride in efficiently handling tab event updates and processing topics, seamlessly integrating into our systems.",
             'what-we-learned': "Web development can take many paths, and sometimes the easiest path is not the easiest.",
-            'whats-next': "Becoming a startup and bought out for 1 million dollars",
-            'built-with': "ai, bootstrap, css3, html5, javascript, python"
+            'whats-next': "Becoming a startup and bought out for 1 million dollars.",
+            'built-with': "AI, Bootstrap, CSS3, HTML5, JavaScript, Python"
         };
-
-        // Display the content
         $('#dynamic-content').html('<h1 class="mb-4">' + topic.charAt(0).toUpperCase() + topic.slice(1).replace(/-/g, ' ') + '</h1><p class="mb-4">' + contentMap[topic] + '</p>');
-        
-</div>
     }
 </script>
 
