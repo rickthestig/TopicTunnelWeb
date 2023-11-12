@@ -83,6 +83,66 @@
             generateContent(topic);
         });
 
+        // Dark mode toggle
+        $('#darkModeToggle').change(function () {
+            $('body').toggleClass('dark-mode');
+        });
+
+        // Word cloud generation button click
+        $('#generateWordCloud').click(function () {
+            // Replace the 'text' field with the content from the 'built-with' section
+            var textForWordCloud = contentMap['built-with'];
+
+            // Replace the placeholder URL with your actual endpoint URL
+            var wordCloudEndpoint = 'https://textvis-word-cloud-v1.p.rapidapi.com/v1/textToCloud';
+
+            // Replace with actual RapidAPI key
+            var rapidApiKey = 'eb88fee325msh4a00d8dd7cabdcbp15ad53jsn51461fc291a4';
+
+            // Replace with actual RapidAPI host
+            var rapidApiHost = 'textvis-word-cloud-v1.p.rapidapi.com';
+
+            // Word cloud parameters
+            var wordCloudParams = {
+                "text": textForWordCloud,
+                "scale": 0.5,
+                "width": 400,
+                "height": 400,
+                "colors": [
+                    "#375E97",
+                    "#FB6542",
+                    "#FFBB00",
+                    "#3F681C"
+                ],
+                "font": "Tahoma",
+                "use_stopwords": true,
+                "language": "en",
+                "uppercase": false
+            };
+
+            // Make the API request
+            $.ajax({
+                url: wordCloudEndpoint,
+                type: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Rapidapi-Key': rapidApiKey,
+                    'X-Rapidapi-Host': rapidApiHost
+                },
+                data: JSON.stringify(wordCloudParams),
+                success: function (response) {
+                    // Handle the response, e.g., display the generated word cloud
+                    console.log(response);
+                    alert("Word Cloud generated successfully!");
+                },
+                error: function (error) {
+                    // Handle errors
+                    console.error(error);
+                    alert("Error generating Word Cloud.");
+                }
+            });
+        });
+
         // Initial content generation
         generateContent('home');
     });
