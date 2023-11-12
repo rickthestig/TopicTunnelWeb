@@ -1,22 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
-<head>
+<html lang="en" data-bs-theme="dark"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TopicTunnel</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <!-- Custom CSS -->
-    <style>
+    <style>        html {
+            height: 100%
+        }
         body {
             padding-top: 56px;
             transition: background-color 0.3s ease;
             font-family: 'Poppins', sans-serif;
-            background-image: url('tt_ico128.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-color: rgba(255, 255, 255, 0.7); /* 40% transparency (adjust the alpha value as needed) */
+            height: 100%;
         }
         .content {
             margin: 20px;
@@ -28,11 +25,17 @@
         .navbar-dark .navbar-toggler-icon {
             background-color: #fff;
         }
+        #tiles {
+            max-height: 100%;
+            background-image: url('tt_ico48.png');
+            background-position: center;
+            background-attachment: fixed;
+        }
     </style>
     <!-- Google Fonts - Poppins -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&amp;display=swap">
 </head>
-<body class="dark-mode">
+<body class="dark-mode" data-new-gr-c-s-check-loaded="14.1045.0" data-gr-ext-installed="">
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -40,12 +43,12 @@
         <img src="tt_ico48.png" class="img-fluid">
       </div>
     <a class="navbar-brand nav-link" data-topic="home" href="#">TopicTunnel</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
         </svg>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="navbar-collapse collapse" id="navbarNav" style="">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="#" data-topic="inspiration">Inspiration</a>
@@ -76,11 +79,13 @@
 </nav>
 
 <!-- Content -->
+    <main class="d-flex flex-column h-100">
 <div class="content">
-    <div id="dynamic-content">
-        <!-- Content will be dynamically generated here -->
-    </div>
+    <div id="dynamic-content"><h1 class="mb-4 pt-4">Home</h1><p class="mb-4 pt-4">Stay Focused with Ease!
+TopicTunnel is a powerful browser extension designed to keep you on track during work or study sessions. Input your current topic, and let our advanced AI algorithms analyze your visited webpages. Receive gentle reminders if you stray off-topic, and enjoy breaks with the popular 'pomodoro timer' method. Embrace productivity and conquer distractions effortlessly.</p></div>
 </div>
+<div class="flex-grow-1" id="tiles"></div>
+    </main>
 
 <!-- Bootstrap and jQuery JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -117,6 +122,4 @@
         $('#dynamic-content').html('<h1 class="mb-4 pt-4">' + topic.charAt(0).toUpperCase() + topic.slice(1).replace(/-/g, ' ') + '</h1><p class="mb-4 pt-4">' + contentMap[topic] + '</p>');
     }
 </script>
-
-</body>
 </html>
