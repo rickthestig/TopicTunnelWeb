@@ -21,6 +21,9 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="#">TopicTunnel</a>
+      <div class="logo-image">
+        <img src="tt_ico128.png" class="img-fluid">
+      </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -77,13 +80,14 @@
         });
 
         // Initial content generation
-        generateContent('inspiration');
+        generateContent('home');
     });
 
     // Function to generate content based on the selected topic
     function generateContent(topic) {
         // Content mapping based on topics
         var contentMap = {
+            'home': "Topic Tunnel!",
             'inspiration': "We were at Qdoba and became unfocused while brainstorming ideas for MadHacks. In a moment of genius, we decided the perfect solution would be a browser extension that allows the user to stay on focus by blocking sites not relevant to their topic they are working on.",
             'what-it-does': "Our extension allows the user to input a topic they are working on, and using advanced AI algorithms, processes visited webpages and determines whether the user is staying on topic or not. If the user visits an 'off-topic' page they will be given a gentle reminder to stay on task. After a period of time, the user is rewarded with some free time, by popular time-management method 'pomodoro timer'.",
             'how-we-built-it': "Our extension utilizes the powerful and universal Google Chrome API to retrieve relevant data from the websites the user visits. Our bootstrap front-end grabs text and forwards via an HTTP request to a Google Cloud Function which contains Python code to utilize OpenAI API to process whether the website is related to the user's topic. An HTTP response is sent back containing a binary identifier on whether the user is on/off-topic. The front-end then handles the identifier and appropriately blocks out the site so the user must return to the topic at hand.",
