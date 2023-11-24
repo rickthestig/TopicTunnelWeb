@@ -1,0 +1,28 @@
+name: Pull Data from PersonalProj480
+
+on:
+  schedule:
+    - cron: '0 */1 * * *'  # Set your desired schedule (this example runs daily)
+jobs:
+  pull-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Pull from PersonalProj480
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          git config --global user.email "github-actions@example.com"
+          git config --global user.name "GitHub Actions"
+          git remote add personalproj480 https://github.com/rickthestig/PersonalProj480.git  # Replace with your PersonalProj480 repository URL
+          git fetch personalproj480 main
+          git checkout -b pusher personalproj480/main
+
+#      - name: Push to pusher branch
+ #       env:
+  #        GH_PAT: ${{ secrets.GH_PAT }}
+   #     run: |
+    #      git push origin pusher
