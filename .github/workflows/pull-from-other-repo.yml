@@ -21,8 +21,8 @@ jobs:
           git fetch personalproj480 main
           git checkout -b pusher personalproj480/main
 
-#      - name: Push to pusher branch
- #       env:
-  #        GH_PAT: ${{ secrets.GH_PAT }}
-   #     run: |
-    #      git push origin pusher
+      - name: Push to pusher branch
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          git push origin pusher
