@@ -2,7 +2,7 @@ name: Pull Data from PersonalProj480
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Set your desired schedule (this example runs every 6 hours)
+    - cron: '0 */1 * * *'  # Set your desired schedule (this example runs every 6 hours)
 
 jobs:
   pull-data:
