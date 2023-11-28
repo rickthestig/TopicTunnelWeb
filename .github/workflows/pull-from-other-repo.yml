@@ -17,5 +17,5 @@ jobs:
         run: |
           git config --global user.email "github-actions@example.com"
           git config --global user.name "GitHub Actions"
-          git remote add personalproj480 https://github.com/username/PersonalProj480.git  # Replace with your PersonalProj480 repository URL
+          git remote add personalproj480 https://github.com/rickthestig/PersonalProj480.git  # Replace with your PersonalProj480 repository URL
           git pull personalproj480 main
